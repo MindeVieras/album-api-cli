@@ -1,0 +1,22 @@
+{
+  "name": "album-api-cli",
+  "version": "0.0.1",
+  "description": "CLI tool for the Album API",
+  "main": "index.js",
+  "scripts": {},
+  "engines": {
+    "node": "12.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MindeVieras/album-api-cli.git"
+  },
+  "author": "Minde Vieras",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MindeVieras/album-api-cli/issues"
+  },
+  "homepage": "https://github.com/MindeVieras/album-api-cli#readme",
+  "dependencies": {},
+  "devDependencies": {}
+}

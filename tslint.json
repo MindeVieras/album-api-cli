@@ -1,0 +1,33 @@
+{
+  "defaultSeverity": "error",
+    "extends": [
+      "tslint:recommended"
+    ],
+      "jsRules": { },
+  "rules": {
+    "ban-types": false,
+    "completed-docs": [
+      true,
+      {
+        "classes": true,
+        "enums": true,
+        "enum-members": true,
+        "functions": true,
+        "interfaces": true,
+        "methods": true,
+        "namespaces": true,
+        "types": true,
+        "variables": true
+      }
+    ],
+    "interface-name": false,
+    "member-ordering": false,
+    "no-console": false,
+    "no-unused-expression": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "semicolon": [true, "never"],
+    "quotemark": [true, "single"]
+  },
+  "rulesDirectory": []
+}

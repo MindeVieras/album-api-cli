@@ -3,9 +3,15 @@
   "version": "0.0.1",
   "description": "CLI tool for the Album API",
   "main": "index.js",
-  "scripts": {},
-  "engines": {
-    "node": "12.13.0"
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "tsc -w",
+    "build": "rimraf dist && tsc && pkg dist/index.js",
+    "clean": "rimraf dist node_modules",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'"
+  },
+  "bin": {
+    "album": "dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +23,28 @@
     "url": "https://github.com/MindeVieras/album-api-cli/issues"
   },
   "homepage": "https://github.com/MindeVieras/album-api-cli#readme",
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@hapi/joi": "^16.1.7",
+    "chalk": "^3.0.0",
+    "commander": "^4.0.1",
+    "dotenv": "^8.2.0",
+    "faker": "^4.1.0",
+    "inquirer": "^7.0.0",
+    "mongodb": "^3.3.4",
+    "progress": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/faker": "^4.1.7",
+    "@types/hapi__joi": "^16.0.3",
+    "@types/inquirer": "^6.5.0",
+    "@types/mongodb": "^3.3.10",
+    "@types/node": "^12.12.7",
+    "@types/progress": "^2.0.3",
+    "nodemon": "^1.19.4",
+    "pkg": "^4.4.0",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.5.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.2"
+  }
 }

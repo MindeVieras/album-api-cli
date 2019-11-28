@@ -4,7 +4,7 @@ import { prompt } from 'inquirer'
 
 import { Mdb } from '../config'
 import ProgressBar from '../ProgressBar'
-import { fakeData, UserProps } from '../fakeData'
+import { fakeData } from '../fakeData'
 
 const Collections = ['Users', 'Albums', 'Media']
 
@@ -18,7 +18,7 @@ enum CollectionNames {
  * Seed command user input interface.
  */
 interface SeedInputProps {
-  collectionName: CollectionNames,
+  collectionName: 'Users' | 'Albums' | 'Media',
   total: number,
 }
 
@@ -76,7 +76,7 @@ export class Seed {
       const db = new Mdb(collectionName)
 
       // Insert documents.
-      const fakeDocumentsData: UserProps[] = fakeData.Users(total)
+      const fakeDocumentsData = fakeData[collectionName](total)
       for (let i = 0; i < fakeDocumentsData.length; i++) {
         const document = fakeDocumentsData[i]
         await db.collection.insertOne(document)

@@ -2,57 +2,54 @@
 import faker from 'faker'
 
 /**
- * User statuses.
+ * User status.
  */
-enum UserStatuses {
-
+enum UserStatus {
   /**
    * Only admins can block and unblock users.
    */
-  blocked,
+  blocked = 'blocked',
 
   /**
    * Active, fully functional user.
    */
-  active,
+  active = 'active',
 }
 
 /**
  * User roles.
  */
 enum UserRoles {
-
   /**
-   * Viewer can only browse public pages.
+   * Viewer can only browse Album.
    */
-  viewer,
+  viewer = 'viewer',
 
   /**
    * Authenticated user created by editor or admin.
    */
-  authed,
+  authed = 'authed',
 
   /**
    * Super user that has full access to the system.
    */
-  admin,
+  admin = 'admin',
 }
 
 /**
  * User model properties.
  */
 export interface UserProps {
-  email?: string,
-  displayName?: string,
-  lastLogin?: Date,
-  username: string,
-  hash: string,
-  locale: string,
-  createdBy: string,
-  role: UserRoles,
-  status: UserStatuses,
-  createdAt: Date,
-  updatedAt: Date,
+  username: string
+  hash: string
+  email?: string
+  displayName?: string
+  locale?: string
+  role: UserRoles
+  status: UserStatus
+  lastLogin?: Date
+  createdAt: Date
+  updatedAt: Date
 }
 
 /**
@@ -68,16 +65,14 @@ export const fakeUsers = (total: number = 10): UserProps[] => {
 
   const users: UserProps[] = []
 
-  // Loop through total counter.
+  // Loop counter.
   for (let i = 0; i < total; i++) {
     // Required user fields.
     const user: UserProps = {
       username: faker.internet.userName(),
-      hash: faker.internet.password(),
-      locale: faker.random.locale(),
-      createdBy: faker.internet.userName(),
-      status: faker.random.number({ min: 0, max: 1 }),
-      role: faker.random.number({ min: 0, max: 2 }),
+      hash: faker.random.uuid(),
+      role: faker.random.arrayElement(Object.values(UserRoles)),
+      status: faker.random.arrayElement(Object.values(UserStatus)),
       createdAt: faker.date.past(5),
       updatedAt: faker.date.past(),
     }
@@ -85,13 +80,17 @@ export const fakeUsers = (total: number = 10): UserProps[] => {
     users.push(user)
   }
 
-  // Randomize fake password fields.
+  // Randomize fake email fields.
   for (let step = 0; step < getRandomFieldIndex(total); step++) {
     users[Math.floor(Math.random() * total)].email = faker.internet.email()
   }
   // Randomize fake displayName fields.
   for (let step = 0; step < getRandomFieldIndex(total); step++) {
     users[Math.floor(Math.random() * total)].displayName = faker.name.findName()
+  }
+  // Randomize fake locale fields.
+  for (let step = 0; step < getRandomFieldIndex(total); step++) {
+    users[Math.floor(Math.random() * total)].locale = faker.random.locale()
   }
   // Randomize fake lastLogin fields.
   for (let step = 0; step < getRandomFieldIndex(total); step++) {

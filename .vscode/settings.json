@@ -2,7 +2,7 @@
   "editor.tabSize": 2,
   "editor.autoIndent": true,
   "editor.insertSpaces": true,
-  "editor.formatOnPaste": true,
+  "editor.formatOnPaste": false,
   "editor.formatOnSave": false,
   "editor.renderWhitespace": "boundary",
   "editor.wordWrapColumn": 120,
